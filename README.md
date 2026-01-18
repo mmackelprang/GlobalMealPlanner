@@ -14,6 +14,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1dZfLN4bokQLc8MlCJ0aoDZ
 
 **Prerequisites:**  Node.js
 
+**⚠️ Security Notice:** This is a client-side application. Your API key will be embedded in the JavaScript bundle and visible to users. For production use, consider implementing a backend proxy to protect your API key.
 
 1. Install dependencies:
    `npm install`
@@ -27,4 +28,11 @@ View your app in AI Studio: https://ai.studio/apps/drive/1dZfLN4bokQLc8MlCJ0aoDZ
 
 ## GitHub Pages Deployment
 
-This repository automatically deploys to GitHub Pages on every commit to the `main` branch. For detailed information about the deployment process, see [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md).
+This repository automatically deploys to GitHub Pages on every commit to the `main` branch. 
+
+**API Key Configuration for GitHub Pages:**
+- The `GEMINI_API_KEY` is read from GitHub Secrets during the deployment workflow
+- Configure it in: Settings > Secrets and variables > Actions > Repository secrets
+- The workflow automatically injects it into the build process
+
+For detailed information about the deployment process, see [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md).
