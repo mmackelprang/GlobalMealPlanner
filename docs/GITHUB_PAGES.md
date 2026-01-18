@@ -61,8 +61,9 @@ If the deployment fails:
 1. Check the Actions tab for error messages
 2. Ensure all dependencies are properly listed in `package.json`
 3. Verify that the build command (`npm run build`) succeeds locally
-4. Check that GitHub Pages is enabled in the repository settings
+4. Confirm that required environment variables (such as `GEMINI_API_KEY`) are configured correctly (for example, as repository or Actions secrets) and made available to the workflow/build
+5. Check that GitHub Pages is enabled in the repository settings
 
 ## Local Development
 
-For local development, the base path is only applied during production builds. Run `npm run dev` for local development on `http://localhost:3000`.
+For local development, run `npm run dev` to start the development server at `http://localhost:3000`.
