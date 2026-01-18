@@ -61,7 +61,10 @@ If the deployment fails:
 1. Check the Actions tab for error messages
 2. Ensure all dependencies are properly listed in `package.json`
 3. Verify that the build command (`npm run build`) succeeds locally
-4. Confirm that required environment variables (such as `GEMINI_API_KEY`) are configured correctly (for example, as repository or Actions secrets) and made available to the workflow/build
+4. Confirm that the `GEMINI_API_KEY` is configured as a repository secret:
+   - Go to Settings > Secrets and variables > Actions
+   - Add a new repository secret named `GEMINI_API_KEY`
+   - The workflow will automatically use this secret during the build process
 5. Check that GitHub Pages is enabled in the repository settings
 
 ## Local Development
