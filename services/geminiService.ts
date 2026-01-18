@@ -75,12 +75,15 @@ export async function swapMealPart(
   country: string, 
   category: string, 
   currentName: string, 
-  constraints: MealConstraints
+  constraints: MealConstraints,
+  guidance?: string
 ): Promise<MealPart> {
   const constraintText = createConstraintPrompt(constraints);
+  const guidanceText = guidance ? `The user would like the new dish to be related to: "${guidance}".` : "The replacement must be distinct from the previous one but still authentic to the culture.";
+  
   const prompt = `Suggest a different ${category} from ${country} to replace "${currentName}". 
     ${constraintText}
-    The replacement must be distinct from the previous one but still authentic to the culture.`;
+    ${guidanceText}`;
 
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
@@ -88,12 +91,11 @@ export async function swapMealPart(
     config: {
       responseMimeType: "application/json",
       responseSchema: MEAL_PART_SCHEMA,
-      systemInstruction: "You are a culinary expert providing a single meal part replacement.",
+      systemInstruction: "You are a culinary expert providing a single meal part replacement. Ensure authenticity to the specified country.",
     },
   });
 
   const parsed = JSON.parse(response.text);
-  // Ensure the ID is attached as it's not in the response schema
   return { ...parsed, id: category };
 }
 

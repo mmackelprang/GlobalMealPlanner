@@ -35,11 +35,14 @@ const App: React.FC = () => {
     }
   };
 
-  const handleSwap = async (category: keyof Pick<FullMealPlan, 'appetizer' | 'sideDish' | 'mainCourse' | 'drink'>) => {
+  const handleSwap = async (
+    category: keyof Pick<FullMealPlan, 'appetizer' | 'sideDish' | 'mainCourse' | 'drink'>,
+    guidance?: string
+  ) => {
     if (!plan) return;
     setSwappingId(category);
     try {
-      const newPart = await swapMealPart(plan.country, category, plan[category].name, constraints);
+      const newPart = await swapMealPart(plan.country, category, plan[category].name, constraints, guidance);
       
       const updatedPlan = { ...plan, [category]: newPart };
       
@@ -136,28 +139,28 @@ const App: React.FC = () => {
               label="Appetizer" 
               icon="fa-solid fa-utensils" 
               part={plan.appetizer} 
-              onSwap={() => handleSwap('appetizer')}
+              onSwap={(guidance) => handleSwap('appetizer', guidance)}
               isSwapping={swappingId === 'appetizer'}
             />
             <MealCard 
               label="Side Dish" 
               icon="fa-solid fa-bowl-food" 
               part={plan.sideDish} 
-              onSwap={() => handleSwap('sideDish')}
+              onSwap={(guidance) => handleSwap('sideDish', guidance)}
               isSwapping={swappingId === 'sideDish'}
             />
             <MealCard 
               label="Main Course" 
               icon="fa-solid fa-plate-wheat" 
               part={plan.mainCourse} 
-              onSwap={() => handleSwap('mainCourse')}
+              onSwap={(guidance) => handleSwap('mainCourse', guidance)}
               isSwapping={swappingId === 'mainCourse'}
             />
             <MealCard 
               label="Drink" 
               icon="fa-solid fa-glass-water" 
               part={plan.drink} 
-              onSwap={() => handleSwap('drink')}
+              onSwap={(guidance) => handleSwap('drink', guidance)}
               isSwapping={swappingId === 'drink'}
             />
           </div>
