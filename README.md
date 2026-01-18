@@ -8,6 +8,8 @@ This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1dZfLN4bokQLc8MlCJ0aoDZEbyxtLhtjS
 
+**Live Demo:** [https://mmackelprang.github.io/GlobalMealPlanner/](https://mmackelprang.github.io/GlobalMealPlanner/)
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
@@ -18,3 +20,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1dZfLN4bokQLc8MlCJ0aoDZ
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## GitHub Pages Deployment
+
+This repository automatically deploys to GitHub Pages on every commit to the `main` branch. For detailed information about the deployment process, see [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md).
